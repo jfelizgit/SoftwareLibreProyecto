@@ -7,7 +7,7 @@
     <h2>Inventario</h2>
         <div class="card py-2" >
             <div class="card-body">
-                <form action="" method="post">
+                <form action="registrar" method="post"> {% csrf_token %}
                     <div class="form-group">
                         <input type="text" id="txtCodigo" name="txtCodigo" class="form-control" placeholder="Código"
                                minlength="3" maxlength="10" required>
