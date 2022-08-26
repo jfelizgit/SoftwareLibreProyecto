@@ -10,3 +10,5 @@ class Inventario(models.Model):
 
     def __str__(self):
         return f'Artículo: {self.articulo} ({self.cantidad})'
+
+

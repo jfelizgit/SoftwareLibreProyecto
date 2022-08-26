@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect
 from .models import Inventario
+from django.contrib import messages
 
 
 # Create your views here.
@@ -7,6 +8,7 @@ from .models import Inventario
 
 def home(request):
     inventarioV = Inventario.objects.all()
+    messages.success(request, 'Registro listado')
     return render(request, 'gestionInv.html', {'inventario': inventarioV})
 
 
@@ -16,7 +18,7 @@ def registrarArt(request):
     cantidad = request.POST['txtCantidad']
 
     inv = Inventario.objects.create(codigo=codigo, articulo=articulo, cantidad=cantidad)
-
+    messages.success(request, '¡Registro agredado!')
     return redirect('/')
 
 
@@ -35,6 +37,7 @@ def editarInv(request):
     inv.cantidad = cantidad
     inv.save()
 
+    messages.success(request, '¡Registro actualizado!')
     return redirect('/')
 
 
@@ -42,4 +45,5 @@ def eliminarArt(request, codigo):
     inv = Inventario.objects.get(codigo=codigo)
     inv.delete()
 
+    messages.success(request, '¡Registro eliminado!')
     return redirect('/')
