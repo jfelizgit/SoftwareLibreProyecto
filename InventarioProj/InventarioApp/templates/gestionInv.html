@@ -3,7 +3,7 @@
 {% block body %}
 
 <div class="row">
-    <div class="col-sm-12 col-md-6 col-lg-4 col-xl-4">
+    <div class="col">
         {% if messages %}
         {% for message in messages %}
         <div class="alert alert-dismissible alert-success">
@@ -34,7 +34,7 @@
         </div>
     </div>
 
-    <div class="col-sm-12 col-md-6 col-lg-8 col-xl-8">
+    <div class="col" >
         <h1>Listado de Artículos</h1>
         <div class="table-responsive py-2">
             <table class="table table-striped">
@@ -44,6 +44,8 @@
                     <th>Código</th>
                     <th>Artículo</th>
                     <th>Cantidad</th>
+                    <th>Fec_creación</th>
+                    <th>Fec_actualización</th>
                     <th colspan="2">Opciones</th>
                 </tr>
                 </thead>
@@ -54,6 +56,10 @@
                     <td>{{i.codigo}}</td>
                     <td>{{i.articulo}}</td>
                     <td>{{i.cantidad}}</td>
+                    <td>{{i.fecha_creacion|date:"d M, Y"}}</td>
+                    <td>{{i.fecha_actualizacion|date:"d M, Y"}}</td>
+
+
                     <td><a href="editar/{{i.codigo}}" class="btn btn-info">Editar</a> </td>
                     <td><a href="eliminar/{{i.codigo}}" class="btn btn-danger btnEliminar">Eliminar</a> </td>
                 </tr>

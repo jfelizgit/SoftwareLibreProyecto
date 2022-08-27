@@ -4,6 +4,8 @@ from django.db import models
 
 
 class Inventario(models.Model):
+    fecha_creacion = models.DateTimeField(auto_now_add=True, blank=True, null=True)
+    fecha_actualizacion = models.DateTimeField(auto_now=True, blank=True, null=True)
     codigo = models.CharField(primary_key=True, max_length=10, serialize=False)
     articulo = models.CharField(max_length=255)
     cantidad = models.IntegerField()

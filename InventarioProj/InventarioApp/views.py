@@ -8,7 +8,7 @@ from django.contrib import messages
 
 def home(request):
     inventarioV = Inventario.objects.all()
-    messages.success(request, 'Registro listado')
+    #    messages.success(request, 'Registro listado')
     return render(request, 'gestionInv.html', {'inventario': inventarioV})
 
 
