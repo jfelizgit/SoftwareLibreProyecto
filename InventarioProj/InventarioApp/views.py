@@ -16,8 +16,9 @@ def registrarArt(request):
     codigo = request.POST['txtCodigo']
     articulo = request.POST['txtArticulo']
     cantidad = request.POST['txtCantidad']
+    ubicacion = request.POST['txtUbicacion']
 
-    inv = Inventario.objects.create(codigo=codigo, articulo=articulo, cantidad=cantidad)
+    inv = Inventario.objects.create(codigo=codigo, articulo=articulo, cantidad=cantidad, ubicacion=ubicacion)
     messages.success(request, '¡Registro agredado!')
     return redirect('/')
 
@@ -31,10 +32,12 @@ def editarInv(request):
     codigo = request.POST['txtCodigo']
     articulo = request.POST['txtArticulo']
     cantidad = request.POST['numCantidad']
+    ubicacion = request.POST['txtUbicacion']
 
     inv = Inventario.objects.get(codigo=codigo)
     inv.articulo = articulo
     inv.cantidad = cantidad
+    inv.ubicacion = ubicacion
     inv.save()
 
     messages.success(request, '¡Registro actualizado!')
