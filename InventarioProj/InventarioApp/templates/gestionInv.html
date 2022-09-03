@@ -50,6 +50,7 @@
                     <th>Ubicación</th>
                     <th>Fec_creación</th>
                     <th>Fec_actualización</th>
+                    <th>Imagen</th>
                     <th colspan="2">Opciones</th>
                 </tr>
                 </thead>
@@ -63,11 +64,15 @@
                     <td>{{i.ubicacion}}</td>
                     <td>{{i.fecha_creacion|date:"d M, Y"}}</td>
                     <td>{{i.fecha_actualizacion|date:"d M, Y"}}</td>
+                    <td>{% if i.imagen %}<a href="{{i.imagen.url}}">Ver</a> {%endif%}</td>
+
+
 
 
                     <td><a href="editar/{{i.codigo}}" class="btn btn-info">Editar</a> </td>
                     <td><a href="eliminar/{{i.codigo}}" class="btn btn-danger btnEliminar">Eliminar</a> </td>
                 </tr>
+
                 {% endfor %}
                 </tbody>
 

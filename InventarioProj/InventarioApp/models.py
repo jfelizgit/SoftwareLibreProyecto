@@ -1,4 +1,5 @@
 from django.db import models
+import os
 
 
 # Create your models here.
@@ -11,6 +12,8 @@ class Inventario(models.Model):
     articulo = models.CharField(max_length=255)
     cantidad = models.IntegerField()
     ubicacion = models.CharField(max_length=255, blank=True, null=True)
+    imagen = models.ImageField(upload_to='inventario', null=True, blank=True)
+
 
     def __str__(self):
         return f'Artículo: {self.articulo} ({self.cantidad})'
