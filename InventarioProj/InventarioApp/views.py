@@ -13,13 +13,16 @@ def home(request):
 
 
 def registrarArt(request):
-    codigo = request.POST['txtCodigo']
-    articulo = request.POST['txtArticulo']
-    cantidad = request.POST['txtCantidad']
-    ubicacion = request.POST['txtUbicacion']
-
-    inv = Inventario.objects.create(codigo=codigo, articulo=articulo, cantidad=cantidad, ubicacion=ubicacion)
-    messages.success(request, '¡Registro agredado!')
+    if request.POST:
+        reg = Inventario()
+        reg.codigo = request.POST.get('txtCodigo')
+        reg.articulo = request.POST.get('txtArticulo')
+        reg.cantidad = request.POST.get('txtCantidad')
+        reg.ubicacion = request.POST.get('txtUbicacion')
+        reg.imagen = request.FILES.get('image')
+        reg.save()
+        messages.success(request, '¡Registro agredado!')
+        return redirect('/')
     return redirect('/')
 
 
@@ -33,11 +36,13 @@ def editarInv(request):
     articulo = request.POST['txtArticulo']
     cantidad = request.POST['numCantidad']
     ubicacion = request.POST['txtUbicacion']
+    imagen = request.FILES.get('image')
 
     inv = Inventario.objects.get(codigo=codigo)
     inv.articulo = articulo
     inv.cantidad = cantidad
     inv.ubicacion = ubicacion
+    inv.imagen = imagen
     inv.save()
 
     messages.success(request, '¡Registro actualizado!')
@@ -50,3 +55,20 @@ def eliminarArt(request, codigo):
 
     messages.success(request, '¡Registro eliminado!')
     return redirect('/')
+
+
+
+# registro antes de insertar imagenes
+# def registrarArt(request):
+#     codigo = request.POST['txtCodigo']
+#     articulo = request.POST['txtArticulo']
+#     cantidad = request.POST['txtCantidad']
+#     ubicacion = request.POST['txtUbicacion']
+#
+#     if len(request.FILES) != 0:
+#         Inventario.imagen = request.FILES['image']
+#         Inventario.save(self=True)
+#         return redirect('/')
+#     inv = Inventario.objects.create(codigo=codigo, articulo=articulo, cantidad=cantidad, ubicacion=ubicacion)
+#     messages.success(request, '¡Registro agredado!')
+#     return redirect('/')

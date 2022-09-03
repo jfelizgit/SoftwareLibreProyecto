@@ -6,3 +6,8 @@ vertical-align: middle;
 h1, h2{
 text-align:center;
 }
+
+.imagen img {
+    width:65px;
+    height: 55px;
+}

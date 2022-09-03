@@ -15,7 +15,7 @@
     <h2>Inventario de Partes</h2>
         <div class="card py-2">
             <div class="card-body">
-                <form action="registrar" method="post"> {% csrf_token %}
+                <form action="registrar" method="post" enctype="multipart/form-data"> {% csrf_token %}
                     <div class="form-group">
                         <input type="text" id="txtCodigo" name="txtCodigo" class="form-control" placeholder="Código"
                                minlength="3" maxlength="10" required>
@@ -30,8 +30,13 @@
                         <input type="text" id="txtUbicacion" name="txtUbicacion" class="form-control" placeholder="Ubicación">
                     </div>
                     <div class="form-group">
+                        <label for="exampleFormControlFile1">Imagen</label>
+                        <input type="file" class="form-control-file" name="image" id="exampleFormControlFile1">
+                    </div>
+                    <div class="form-group">
                         <button type="submit" class="btn btn-success btn-block text-white">Guardar</button>
                     </div>
+
                 </form>
             </div>
         </div>
@@ -64,11 +69,10 @@
                     <td>{{i.ubicacion}}</td>
                     <td>{{i.fecha_creacion|date:"d M, Y"}}</td>
                     <td>{{i.fecha_actualizacion|date:"d M, Y"}}</td>
-                    <td>{% if i.imagen %}<a href="{{i.imagen.url}}">Ver</a> {%endif%}</td>
+                    <td class="imagen">{% if i.imagen %}<a href="{{i.imagen.url}}"><img src="{{i.imagen.url}}" alt="">
+                        {%endif%}</a> </td>
 
-
-
-
+<!--                                Botones Editar y eliminar-->
                     <td><a href="editar/{{i.codigo}}" class="btn btn-info">Editar</a> </td>
                     <td><a href="eliminar/{{i.codigo}}" class="btn btn-danger btnEliminar">Eliminar</a> </td>
                 </tr>
