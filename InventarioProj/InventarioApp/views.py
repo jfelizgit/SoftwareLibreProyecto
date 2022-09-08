@@ -11,6 +11,11 @@ def home(request):
     #    messages.success(request, 'Registro listado')
     return render(request, 'gestionInv.html', {'inventario': inventarioV})
 
+def index(request):
+    return render(request, 'home.html')
+
+def about(request):
+    return render(request, 'about.html')
 
 def registrarArt(request):
     if request.POST:
