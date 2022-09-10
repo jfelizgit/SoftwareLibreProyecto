@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 from .models import Inventario
 from django.contrib import messages
-
+import os
 
 # Create your views here.
 
@@ -25,10 +25,11 @@ def registrarArt(request):
         reg.cantidad = request.POST.get('txtCantidad')
         reg.ubicacion = request.POST.get('txtUbicacion')
         reg.imagen = request.FILES.get('image')
+        reg.tech = os.getlogin()
         reg.save()
         messages.success(request, '¡Registro agredado!')
-        return redirect('/')
-    return redirect('/')
+        return redirect('inventApp')
+    return redirect('inventApp')
 
 
 def editarArt(request, codigo):
@@ -51,7 +52,7 @@ def editarInv(request):
     inv.save()
 
     messages.success(request, '¡Registro actualizado!')
-    return redirect('/')
+    return redirect('inventApp')
 
 
 def eliminarArt(request, codigo):
@@ -59,7 +60,7 @@ def eliminarArt(request, codigo):
     inv.delete()
 
     messages.success(request, '¡Registro eliminado!')
-    return redirect('/')
+    return redirect('inventApp')
 
 
 

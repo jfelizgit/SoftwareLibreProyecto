@@ -11,3 +11,9 @@ text-align:center;
     width:65px;
     height: 55px;
 }
+
+.bgimg{
+background: url("/static/bg.jpg") 100% 0 no-repeat fixed;
+height: 1800px;
+padding: 100px 0 0 0;
+}

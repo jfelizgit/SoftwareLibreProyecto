@@ -53,6 +53,7 @@
                     <th>Artículo</th>
                     <th>Cantidad</th>
                     <th>Ubicación</th>
+                    <th>Técnico</th>
                     <th>Fec_creación</th>
                     <th>Fec_actualización</th>
                     <th>Imagen</th>
@@ -67,6 +68,7 @@
                     <td>{{i.articulo}}</td>
                     <td>{{i.cantidad}}</td>
                     <td>{{i.ubicacion}}</td>
+                    <td>{{i.tech}}</td>
                     <td>{{i.fecha_creacion|date:"d M, Y"}}</td>
                     <td>{{i.fecha_actualizacion|date:"d M, Y"}}</td>
                     <td class="imagen">{% if i.imagen %}<a href="{{i.imagen.url}}"><img src="{{i.imagen.url}}" alt="">
