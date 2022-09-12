@@ -1,15 +1,27 @@
 {% extends './base.html' %}
 {% block title %} Gestion de Inventario {% endblock %}
 {% block body %}
+<h1><p>Bienvenidos a InventApp</p></h1>
 
+<div class="float-start d-inline-flex p-2 bd-highlight">
+    <div class="card text-dark bg-light mb-3" style="max-width: 18rem;">
+        <div class="card-body">
+            <h5 class="card-title">InventApp</h5>
+            <p class="card-text">
+                Esta es una aplicación para el manejo de productos de un almacén.
+                Fue mayormente diseñada bajo <b>Frameworks</b> y herramientas de uso libre y gratis.
+            </p>
+        </div>
+    </div>
+</div>
 <style>
-    body{ background-image: url("/static/bg.jpg");
+    body{ background-image: url("/static/img/bg.jpg");
     background-repeat: no-repeat;
     background-attachment: fixed;
     background-size: cover;
 </style>
 
-<h1><p>Bienvenidos a InventApp</p></h1>
+
 
 
 {% endblock %}

@@ -27,8 +27,13 @@
             <li class="nav-item">
 
             </li>
-            <li class="nav-item"><a class="nav-link btn btn-success active" href="#">Iniciar sesión</a></li>
-            <li class="nav-item"><a class="nav-link active" href="#">Cerrar sesión</a></li>
+            <div class="nav-item" style="color: white; text-align: right; margin-right:50px;">
+                {% if user.is_authenticated %}
+                Bienvenido {{user.username}} &nbsp; &nbsp; <a class="nav-item btn btn-info" style="color: white" href="{% url 'cerrar_sesion' %}">Cerrar sesión</a>
+                {% else %}
+                    <a class=" nav-item btn btn-success" style="color: white" href="{% url 'login' %}">Login</a> &nbsp; <a class="nav-item btn btn-info" style="color: white" href="{% url 'Autenticarse' %}">Registrarse</a>
+                {% endif %}
+            </div>
         </ul>
 
     </div>

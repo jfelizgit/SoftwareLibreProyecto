@@ -1,21 +1,25 @@
+from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect
 from .models import Inventario
 from django.contrib import messages
 import os
 
+
 # Create your views here.
-
-
+@login_required(login_url='login')
 def home(request):
     inventarioV = Inventario.objects.all()
     #    messages.success(request, 'Registro listado')
     return render(request, 'gestionInv.html', {'inventario': inventarioV})
 
+
 def index(request):
     return render(request, 'home.html')
 
+
 def about(request):
     return render(request, 'about.html')
+
 
 def registrarArt(request):
     if request.POST:
@@ -61,8 +65,6 @@ def eliminarArt(request, codigo):
 
     messages.success(request, '¡Registro eliminado!')
     return redirect('inventApp')
-
-
 
 # registro antes de insertar imagenes
 # def registrarArt(request):
